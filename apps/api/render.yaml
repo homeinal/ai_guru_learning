@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: ai-learning-tracker-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: https://your-vercel-app.vercel.app,http://localhost:3000
+      - key: CHROMA_PERSIST_DIRECTORY
+        value: /app/chroma_data
+    disk:
+      name: chroma-data
+      mountPath: /app/chroma_data
+      sizeGB: 1
