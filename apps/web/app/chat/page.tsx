@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { sendChatMessage, ChatMessage, getChatStats } from "@/lib/api-client";
 import { ChatInput } from "@/components/chat/ChatInput";
 import { ChatMessageBubble } from "@/components/chat/ChatMessage";
+import { FeedMiniWidget } from "@/components/feed/FeedMiniWidget";
 
 interface MessageWithAnalytics {
   message: ChatMessage;
@@ -96,6 +97,8 @@ export default function ChatPage() {
       {/* Messages */}
       <div className="flex-1 overflow-y-auto px-4 py-6">
         <div className="max-w-3xl mx-auto space-y-6">
+          {/* Feed Mini Widget */}
+          <FeedMiniWidget />
           {messages.length === 0 ? (
             <div className="text-center py-12">
               <div className="text-4xl mb-4">💬</div>
